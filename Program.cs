@@ -2,7 +2,7 @@
 
 namespace RPG_Characters
 {
-    class Program
+    class RPG_Game
     {
         static void Main(string[] args)
         {

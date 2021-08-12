@@ -1,9 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>RPG_Characters</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Characters\**" />
+    <Compile Remove="Items\**" />
+    <EmbeddedResource Remove="Characters\**" />
+    <EmbeddedResource Remove="Items\**" />
+    <None Remove="Characters\**" />
+    <None Remove="Items\**" />
+  </ItemGroup>
 
 </Project>

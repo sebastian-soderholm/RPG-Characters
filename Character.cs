@@ -11,7 +11,7 @@ namespace RPG_Characters
     public abstract class Character
     {
         public abstract string Name { get; set; }
-        public int Level { get; set; }
+        public abstract int Level { get; set; }
         public PrimaryAttribute PrimaryAttribute { get; set; }
         public SecondaryAttribute SecondaryAttribute { get; set; }
         private StringBuilder StatsStringBuilder = new StringBuilder();

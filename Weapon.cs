@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RPG_Characters
 {
-    class Weapon : Item
+    public class Weapon : Item
     {
-        private enum WeaponType
+        public enum WeaponType
         {
             Axe,
             Bow,

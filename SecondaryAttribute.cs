@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace RPG_Characters
 {
-    class SecondaryAttribute
+    public class SecondaryAttribute
     {
-        private int Health;
-        private int Armor;
-        private int ElementalResistance;
+        public int Health { get; set; }
+        public int ArmorRating { get; set; }
+        public int ElementalResistance { get; set; }
     }
 }

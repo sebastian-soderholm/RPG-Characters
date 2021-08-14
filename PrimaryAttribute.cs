@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RPG_Characters
 {
-    class PrimaryAttribute
+    public class PrimaryAttribute
     {
-        private int Vitality;
-        private int Strength;
-        private int Dexterity;
-        private int Intelligence;
+        public int Vitality { get; set; }
+        public int Strength { get; set; }
+        public int Dexterity { get; set; }
+        public int Intelligence { get; set; }
     }
 }

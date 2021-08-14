@@ -8,9 +8,15 @@ namespace RPG_Characters
     public abstract class Character
     {
         private string Name;
-        private int Level = 1;
-        private PrimaryAttribute primaryAttribute;
-        private SecondaryAttribute secondaryAttribute;
-        private StringBuilder characterStatsString;
+        private int Level;
+        private PrimaryAttribute PrimaryAttribute;
+        private SecondaryAttribute SecondaryAttribute;
+        private StringBuilder StatsStringBuilder;
+
+        public abstract void LevelUp();
+        public abstract void Equip(Weapon weaponToEquip);
+        public abstract void Equip(Armor armorToEquip);
+        private abstract bool EquipPermitted(Item item);
+
     }
 }

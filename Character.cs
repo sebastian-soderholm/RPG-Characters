@@ -11,12 +11,12 @@ namespace RPG_Characters
     public abstract class Character
     {
         public abstract string Name { get; set; }
-        private int Level;
-        private PrimaryAttribute PrimaryAttribute;
-        private SecondaryAttribute SecondaryAttribute;
+        public int Level { get; set; }
+        public PrimaryAttribute PrimaryAttribute { get; set; }
+        public SecondaryAttribute SecondaryAttribute { get; set; }
         private StringBuilder StatsStringBuilder = new StringBuilder();
         private Dictionary<Slot, Item> Equipment = new Dictionary<Slot, Item>();
-        private enum Slot
+        public enum Slot
         {
             Head,
             Body,
@@ -31,10 +31,10 @@ namespace RPG_Characters
         public abstract float GetDPS();
         public virtual string GetStatsString()
         {
-            this.StatsStringBuilder.AppendFormat(
+            return this.StatsStringBuilder.AppendFormat(
                 "Character name: {0}\n" +
                 "Character level: {1}\n" +
-                "Strength: \n" +
+                "Strength: {2}\n" +
                 "Dexterity: {3}\n" +
                 "Intelligence: {4}\n" +
                 "Health: {5}\n" +
@@ -51,9 +51,7 @@ namespace RPG_Characters
                 this.SecondaryAttribute.ArmorRating,
                 this.SecondaryAttribute.ElementalResistance,
                 this.GetDPS()
-             );
-
-            return this.StatsStringBuilder.ToString();
+             ).ToString();
         }
 
     }

@@ -8,9 +8,9 @@ namespace RPG_Characters
     public class Ranger : Character
     {
         public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override int Level { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override StringBuilder StatsStringBuilder { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override Dictionary<Slot, Item> Equipments { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        protected override int Level { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        protected override StringBuilder StatsStringBuilder { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        protected override Dictionary<Slot, Item> Equipments { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void Attack(Character targetCharacter)
         {
@@ -27,17 +27,17 @@ namespace RPG_Characters
             throw new NotImplementedException();
         }
 
-        public override bool EquipPermitted(Item item)
+        protected override bool EquipPermitted(Item item)
         {
             throw new NotImplementedException();
         }
 
-        public override float GetDPS()
+        protected override float GetDPS()
         {
             throw new NotImplementedException();
         }
 
-        public override void LevelUp()
+        protected override void LevelUp()
         {
             throw new NotImplementedException();
         }

@@ -11,19 +11,23 @@ namespace RPG_Characters
     public abstract class Character
     {
         public abstract string Name { get; set; }
-        protected abstract int Level { get; set; }
-        protected PrimaryAttribute PrimaryAttribute { get; set; }
-        protected SecondaryAttribute SecondaryAttribute { get; set; }
-        protected abstract StringBuilder StatsStringBuilder { get; set; }
-        protected abstract Dictionary<Slot, Item> Equipments { get; set; }
-        protected enum Slot
+        public abstract int Level { get; set; }
+        public PrimaryAttribute PrimaryAttribute { get; set; }
+        public SecondaryAttribute SecondaryAttribute { get; set; }
+        public abstract StringBuilder StatsStringBuilder { get; set; }
+        public abstract Dictionary<Slot, Item> Equipments { get; set; }
+        public enum Slot
         {
             Head,
             Body,
             Legs,
             Weapon,
         }
-        
+        /// <summary>
+        /// Increse character level by 1
+        /// Increase primary attributes based on character type
+        /// </summary>
+        public abstract void LevelUp();
         /// <summary>
         /// Print the damage character inflicts based on calculated DPS
         /// </summary>
@@ -46,22 +50,16 @@ namespace RPG_Characters
         /// </summary>
         /// <param name="item">Item that is to be checked for equipping</param>
         /// <returns>True if item can be equipped, false otherwise</returns>
-        protected abstract bool EquipPermitted(Item item);
+        public abstract bool EquipPermitted(Item item);
         /// <summary>
         /// Calculate and return character's damage per second (DPS)
         /// </summary>
         /// <returns>Character's DPS as float</returns>
-        protected abstract float GetDPS();
-        /// <summary>
-        /// Increse character level by 1
-        /// Increase primary attributes based on character type
-        /// </summary>
-        protected abstract void LevelUp();
+        public abstract float GetDPS();
         /// <summary>
         /// Create a summary of character stats with StringBuilder
         /// </summary>
         /// <returns>Character stats as a string</returns>
-        /// 
         public virtual string GetStatsString()
         {
             return this.StatsStringBuilder.AppendFormat(

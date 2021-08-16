@@ -8,6 +8,7 @@ namespace RPG_Characters
 {
     public class Armor : Item
     {
+        public ArmorType Type { get; set; }
         public enum ArmorType
         {
             Cloth,

@@ -6,7 +6,10 @@ namespace RPG_Characters
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Warrior warrior = new Warrior("TestWarrior");
+
+            Console.WriteLine(warrior.GetStatsString());
+
         }
     }
 }

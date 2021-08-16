@@ -32,7 +32,5 @@ namespace RPG_Characters
         {
             return BaseDamage * AttacksPerSecond;
         }
-
-
     }
 }

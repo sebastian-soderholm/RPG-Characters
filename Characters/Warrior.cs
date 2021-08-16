@@ -14,6 +14,11 @@ namespace RPG_Characters
         public override PrimaryAttributes TotalPrimaryAttributes { get; set; }
         public override SecondaryAttributes SecondaryAttributes { get; set; }
         public override Dictionary<Slot, Item> Equipments { get; set; }
+        public enum equippableItems
+        {
+            Axe, Hammer, Sword, Mail, Plate
+        }
+
 
         /// <summary>
         /// Create Warrior instance based on level 1 stats
@@ -23,7 +28,7 @@ namespace RPG_Characters
         {
             Name = name;
             Level = 1;
-            BasePrimaryAttributes = new PrimaryAttributes(10,5,2,1);
+            BasePrimaryAttributes = new PrimaryAttributes(5, 2, 1, 10);
             TotalPrimaryAttributes = new PrimaryAttributes(0,0,0,0);
 
             SecondaryAttributes = new SecondaryAttributes(
@@ -45,34 +50,31 @@ namespace RPG_Characters
             throw new NotImplementedException();
         }
 
-        public override void Equip(Weapon weapon)
+        public override void Equip(Weapon weaponToEquip)
         {
-            throw new NotImplementedException();
-        }
-
-        public override void Equip(Armor armor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool EquipPermitted(Item item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override float GetDPS()
-        {
-            try
+            if (equippableItems.IsDefined(weaponToEquip.Type))
             {
-                Item equippedWeapon;
-                if (Equipments.TryGetValue(Slot.Weapon, out equippedWeapon) && Equipments[Slot.Weapon] != null)
-                {
-                    return Equipments[Slot.Weapon].GetDPS() + 1 + TotalPrimaryAttributes.Strength / 100;
-                }
+                Equipments[Slot.Weapon] = weaponToEquip;
             }
-            catch (NullReferenceException) { }
-            
-            return 1 + TotalPrimaryAttributes.Strength / 100;
+        }
+
+        public override void Equip(Armor armorToEquip)
+        {
+            if (equippableItems.IsDefined(armorToEquip.Type))
+            {
+
+            }
+            throw new NotImplementedException();
+        }
+        public override double GetDPS()
+        {
+            if (Equipments[Slot.Weapon] != null)
+            {
+                //Console.WriteLine("BasePrimaryAttributes.Strength: ", BasePrimaryAttributes.Strength);
+                return Equipments[Slot.Weapon].GetDPS() + 1 + (double)BasePrimaryAttributes.Strength / 100;
+            }
+            Console.WriteLine("BasePrimaryAttributes.Strength: " + BasePrimaryAttributes.Strength);
+            return 1 + (double)BasePrimaryAttributes.Strength / 100;
         }
 
         public override void LevelUp()

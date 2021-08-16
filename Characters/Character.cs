@@ -12,6 +12,7 @@ namespace RPG_Characters
         public abstract PrimaryAttributes TotalPrimaryAttributes { get; set; }
         public abstract SecondaryAttributes SecondaryAttributes { get; set; }
         public abstract Dictionary<Slot, Item> Equipments { get; set; }
+
         public enum Slot
         {
             Head,
@@ -34,24 +35,24 @@ namespace RPG_Characters
         /// </summary>
         /// <param name="weapon">Weapon to be equipped</param>
         /// <exception cref="">InvalidWeaponException</exception>
-        public abstract void Equip(Weapon weapon);
+        public abstract void Equip(Weapon weaponToEquip);
         /// <summary>
         /// Replace current armor in Equipments property
         /// </summary>
         /// <param name="weapon">Armor to be equipped</param>
         /// <exception cref="">InvalidWeaponException</exception>
-        public abstract void Equip(Armor armor);
+        public abstract void Equip(Armor armorToEquip);
         /// <summary>
         /// Check if character can equip Item
         /// </summary>
         /// <param name="item">Item to be checked for equipping</param>
         /// <returns>True if item can be equipped, false otherwise</returns>
-        public abstract bool EquipPermitted(Item item);
+        //public abstract bool EquipPermitted(Item weaponToEquip);
         /// <summary>
         /// Calculate and return character's damage per second (DPS)
         /// </summary>
         /// <returns>Character's DPS as float</returns>
-        public abstract float GetDPS();
+        public abstract double GetDPS();
         /// <summary>
         /// Create a summary of character stats with StringBuilder
         /// </summary>
@@ -70,16 +71,15 @@ namespace RPG_Characters
                 "Armor Rating: {6}\n" +
                 "Elemental Resistance: {7}\n" +
                 "DPS: {8}", 
-                this.Name, 
-                this.Level, 
-                this.BasePrimaryAttributes,
-                this.BasePrimaryAttributes.Strength,
-                this.BasePrimaryAttributes.Dexterity,
-                this.BasePrimaryAttributes.Intelligence,
-                this.SecondaryAttributes.Health,
-                this.SecondaryAttributes.ArmorRating,
-                this.SecondaryAttributes.ElementalResistance,
-                this.GetDPS()
+                Name, 
+                Level, 
+                BasePrimaryAttributes.Strength,
+                BasePrimaryAttributes.Dexterity,
+                BasePrimaryAttributes.Intelligence,
+                SecondaryAttributes.Health,
+                SecondaryAttributes.ArmorRating,
+                SecondaryAttributes.ElementalResistance,
+                GetDPS()
              ).ToString();
         }
     }

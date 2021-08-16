@@ -8,16 +8,16 @@ namespace RPG_Characters
     {
         public abstract string Name { get; set; }
         public abstract int Level { get; set; }
-        public abstract PrimaryAttributes BasePrimaryAttribute { get; set; }
-        public abstract PrimaryAttributes TotalPrimaryAttribute { get; set; }
-        public abstract SecondaryAttributes SecondaryAttribute { get; set; }
+        protected abstract PrimaryAttributes BasePrimaryAttributes { get; set; }
+        public abstract PrimaryAttributes TotalPrimaryAttributes { get; set; }
+        public abstract SecondaryAttributes SecondaryAttributes { get; set; }
         public abstract Dictionary<Slot, Item> Equipments { get; set; }
         public enum Slot
         {
             Head,
             Body,
             Legs,
-            Weapon,
+            Weapon
         }
         /// <summary>
         /// Increse character level by 1
@@ -44,7 +44,7 @@ namespace RPG_Characters
         /// <summary>
         /// Check if character can equip Item
         /// </summary>
-        /// <param name="item">Item that is to be checked for equipping</param>
+        /// <param name="item">Item to be checked for equipping</param>
         /// <returns>True if item can be equipped, false otherwise</returns>
         public abstract bool EquipPermitted(Item item);
         /// <summary>
@@ -72,13 +72,13 @@ namespace RPG_Characters
                 "DPS: {8}", 
                 this.Name, 
                 this.Level, 
-                this.BasePrimaryAttribute,
-                this.BasePrimaryAttribute.Strength,
-                this.BasePrimaryAttribute.Dexterity,
-                this.BasePrimaryAttribute.Intelligence,
-                this.SecondaryAttribute.Health,
-                this.SecondaryAttribute.ArmorRating,
-                this.SecondaryAttribute.ElementalResistance,
+                this.BasePrimaryAttributes,
+                this.BasePrimaryAttributes.Strength,
+                this.BasePrimaryAttributes.Dexterity,
+                this.BasePrimaryAttributes.Intelligence,
+                this.SecondaryAttributes.Health,
+                this.SecondaryAttributes.ArmorRating,
+                this.SecondaryAttributes.ElementalResistance,
                 this.GetDPS()
              ).ToString();
         }

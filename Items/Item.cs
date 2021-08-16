@@ -11,6 +11,11 @@ namespace RPG_Characters
     {
         public string Name { get; set; }
         public int RequiredLevel { get; }
-
+        /// <summary>
+        /// Return DPS value of item.
+        /// </summary>
+        /// <returns>DPS value as int. For items without DPS, return 0. </returns>
+        public virtual int GetDPS() { return 0; } 
+        
     }
 }

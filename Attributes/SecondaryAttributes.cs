@@ -11,5 +11,13 @@ namespace RPG_Characters
         public int Health { get; set; }
         public int ArmorRating { get; set; }
         public int ElementalResistance { get; set; }
+
+        public SecondaryAttributes(int health, int armorRating, int elementalResistance)
+        {
+            this.Health = health;
+            this.ArmorRating = armorRating;
+            this.ElementalResistance = elementalResistance;
+        }
+
     }
 }

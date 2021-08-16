@@ -14,9 +14,9 @@ namespace RPG_Characters
 
         public SecondaryAttributes(int health, int armorRating, int elementalResistance)
         {
-            this.Health = health;
-            this.ArmorRating = armorRating;
-            this.ElementalResistance = elementalResistance;
+            Health = health;
+            ArmorRating = armorRating;
+            ElementalResistance = elementalResistance;
         }
 
     }

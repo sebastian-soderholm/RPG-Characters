@@ -9,7 +9,6 @@ namespace RPG_Characters
             Warrior warrior = new Warrior("TestWarrior");
 
             Console.WriteLine(warrior.GetStatsString());
-
         }
     }
 }

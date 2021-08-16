@@ -34,7 +34,7 @@ namespace RPG_Characters
             throw new NotImplementedException();
         }
 
-        public override float GetDPS()
+        public override double GetDPS()
         {
             throw new NotImplementedException();
         }

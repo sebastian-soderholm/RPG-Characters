@@ -8,17 +8,17 @@ namespace RPG_Characters
 {
     public class PrimaryAttributes
     {
-        public int Vitality { get; set; }
         public int Strength { get; set; }
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
+        public int Vitality { get; set; }
 
-        public PrimaryAttributes(int vitality, int strength, int dexterity, int intelligence)
+        public PrimaryAttributes(int strength, int dexterity, int intelligence, int vitality)
         {
-            this.Vitality = vitality;
-            this.Strength = strength;
-            this.Dexterity = dexterity;
-            this.Intelligence = intelligence;
+            Strength = strength;
+            Dexterity = dexterity;
+            Intelligence = intelligence;
+            Vitality = vitality;
         }
     }
 }

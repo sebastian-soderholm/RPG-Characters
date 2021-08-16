@@ -7,17 +7,10 @@ namespace RPG_Characters
 {
     public class Warrior : Character
     {
-        public override string Name { get; set; }
-        public override int Level { get; set; }
-        protected override PrimaryAttributes BasePrimaryAttributes { get; set; }
-        public override PrimaryAttributes TotalPrimaryAttributes { get; set; }
-        public override SecondaryAttributes SecondaryAttributes { get; set; }
-        public override Dictionary<Slot, Item> Equipments { get; set; }
         public enum equippableItems
         {
             WEAPON_AXE, WEAPON_HAMMER, WEAPON_SWORD, ARMOR_MAIL, ARMOR_PLATE
         }
-
         /// <summary>
         /// Create Warrior instance based on level 1 stats
         /// </summary>
@@ -34,7 +27,8 @@ namespace RPG_Characters
                 BasePrimaryAttributes.Strength + BasePrimaryAttributes.Dexterity,
                 BasePrimaryAttributes.Intelligence
                 );
-            Equipments = new Dictionary<Slot, Item>()
+
+            Equipment = new Dictionary<Slot, Item>()
             {
                 { Slot.SLOT_BODY, null},
                 { Slot.SLOT_HEAD, null},
@@ -43,7 +37,7 @@ namespace RPG_Characters
             };
         }
 
-        public override void Attack(Character targetCharacter)
+        public override void Attack(ref Character targetCharacter)
         {
             throw new NotImplementedException();
         }
@@ -52,7 +46,7 @@ namespace RPG_Characters
         {
             if (equippableItems.IsDefined(weaponToEquip.Type))
             {
-                Equipments[Slot.SLOT_WEAPON] = weaponToEquip;
+                Equipment[Slot.SLOT_WEAPON] = weaponToEquip;
             }
             else
             {
@@ -64,7 +58,7 @@ namespace RPG_Characters
         {
             if (equippableItems.IsDefined(armorToEquip.Type))
             {
-                Equipments[Slot.SLOT_WEAPON] = armorToEquip;
+                Equipment[Slot.SLOT_WEAPON] = armorToEquip;
             }
             else
             {
@@ -73,18 +67,20 @@ namespace RPG_Characters
         }
         public override double GetDPS()
         {
-            if (Equipments[Slot.SLOT_WEAPON] != null)
+            if (Equipment[Slot.SLOT_WEAPON] != null)
             {
-                //Console.WriteLine("BasePrimaryAttributes.Strength: ", BasePrimaryAttributes.Strength);
-                return Equipments[Slot.SLOT_WEAPON].GetDPS() + 1 + (double)BasePrimaryAttributes.Strength / 100;
+                return Equipment[Slot.SLOT_WEAPON].GetDPS() + 1 + (double)BasePrimaryAttributes.Strength / 100;
             }
-            Console.WriteLine("BasePrimaryAttributes.Strength: " + BasePrimaryAttributes.Strength);
             return 1 + (double)BasePrimaryAttributes.Strength / 100;
         }
 
         public override void LevelUp()
         {
-            throw new NotImplementedException();
+            Level++;
+            BasePrimaryAttributes.Strength += 3;
+            BasePrimaryAttributes.Dexterity += 2;
+            BasePrimaryAttributes.Intelligence += 1;
+            BasePrimaryAttributes.Vitality += 5;
         }
     }
 

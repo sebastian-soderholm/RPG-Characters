@@ -10,7 +10,8 @@ namespace RPG_Characters
     public abstract class Item
     {
         public string Name { get; set; }
-        public int RequiredLevel { get; }
+        public int RequiredLevel { get; set; }
+
         /// <summary>
         /// Return DPS value of item.
         /// </summary>

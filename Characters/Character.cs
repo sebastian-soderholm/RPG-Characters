@@ -6,12 +6,21 @@ namespace RPG_Characters
 {
     public abstract class Character
     {
-        public abstract string Name { get; set; }
-        public abstract int Level { get; set; }
-        protected abstract PrimaryAttributes BasePrimaryAttributes { get; set; }
-        public abstract PrimaryAttributes TotalPrimaryAttributes { get; set; }
-        public abstract SecondaryAttributes SecondaryAttributes { get; set; }
-        public abstract Dictionary<Slot, Item> Equipments { get; set; }
+        public string Name { get; set; }
+        public int Level { get; set; }
+        /// <summary>
+        /// BasePrimaryAttributes are calculated based on character type and level
+        /// </summary>
+        protected PrimaryAttributes BasePrimaryAttributes { get; set; }
+        /// <summary>
+        /// TotalPrimaryAttributes = BasePrimaryAttributes + equipment bonuses
+        /// </summary>
+        public PrimaryAttributes TotalPrimaryAttributes { get; set; }
+        /// <summary>
+        /// Secondary attributes are calculated based on BasePrimaryAttributes and equipped items
+        /// </summary>
+        public SecondaryAttributes SecondaryAttributes { get; set; }
+        public Dictionary<Slot, Item> Equipment { get; set; }
 
         public enum Slot
         {
@@ -26,25 +35,19 @@ namespace RPG_Characters
         /// Print the damage character inflicts based on calculated DPS
         /// </summary>
         /// <param name="targetCharacter">Character instance that the attack is directed towards</param>
-        public abstract void Attack(Character targetCharacter);
+        public abstract void Attack(ref Character targetCharacter);
         /// <summary>
-        /// Replace current weapon in Equipments property
+        /// Replace current weapon in Equipment property
         /// </summary>
         /// <param name="weapon">Weapon to be equipped</param>
         /// <exception cref="">InvalidWeaponException</exception>
         public abstract void Equip(Weapon weaponToEquip);
         /// <summary>
-        /// Replace current armor in Equipments property
+        /// Replace current armor in Equipment property
         /// </summary>
-        /// <param name="weapon">Armor to be equipped</param>
-        /// <exception cref="">InvalidWeaponException</exception>
+        /// <param name="armor">Armor to be equipped</param>
+        /// <exception cref="">InvalidArmorException</exception>
         public abstract void Equip(Armor armorToEquip);
-        /// <summary>
-        /// Check if character can equip Item
-        /// </summary>
-        /// <param name="item">Item to be checked for equipping</param>
-        /// <returns>True if item can be equipped, false otherwise</returns>
-        //public abstract bool EquipPermitted(Item weaponToEquip);
         /// <summary>
         /// Calculate and return character's damage per second (DPS)
         /// </summary>

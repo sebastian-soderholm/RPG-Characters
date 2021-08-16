@@ -8,16 +8,9 @@ namespace RPG_Characters
 {
     public class Weapon : Item
     {
-        public Weapon(int baseDamage, int attacksPerSecond)
-        {
-            BaseDamage = baseDamage;
-            AttacksPerSecond = attacksPerSecond;
-        }
         public int BaseDamage { get; set; }
         public int AttacksPerSecond { get; set; }
-
         public WeaponType Type { get; set; }
-
         public enum WeaponType
         {
             WEAPON_AXE,
@@ -27,6 +20,11 @@ namespace RPG_Characters
             WEAPON_STAFF,
             WEAPON_SWORD,
             WEAPON_WAND,
+        }
+        public Weapon(int baseDamage, int attacksPerSecond)
+        {
+            BaseDamage = baseDamage;
+            AttacksPerSecond = attacksPerSecond;
         }
         public override int GetDPS()
         {

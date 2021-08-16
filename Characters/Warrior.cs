@@ -7,7 +7,6 @@ namespace RPG_Characters
 {
     public class Warrior : Character
     {
-
         public override string Name { get; set; }
         public override int Level { get; set; }
         protected override PrimaryAttributes BasePrimaryAttributes { get; set; }
@@ -16,9 +15,8 @@ namespace RPG_Characters
         public override Dictionary<Slot, Item> Equipments { get; set; }
         public enum equippableItems
         {
-            Axe, Hammer, Sword, Mail, Plate
+            WEAPON_AXE, WEAPON_HAMMER, WEAPON_SWORD, ARMOR_MAIL, ARMOR_PLATE
         }
-
 
         /// <summary>
         /// Create Warrior instance based on level 1 stats
@@ -38,10 +36,10 @@ namespace RPG_Characters
                 );
             Equipments = new Dictionary<Slot, Item>()
             {
-                { Slot.Body, null},
-                { Slot.Head, null},
-                { Slot.Legs, null},
-                { Slot.Weapon, null}
+                { Slot.SLOT_BODY, null},
+                { Slot.SLOT_HEAD, null},
+                { Slot.SLOT_LEGS, null},
+                { Slot.SLOT_WEAPON, null}
             };
         }
 
@@ -54,7 +52,11 @@ namespace RPG_Characters
         {
             if (equippableItems.IsDefined(weaponToEquip.Type))
             {
-                Equipments[Slot.Weapon] = weaponToEquip;
+                Equipments[Slot.SLOT_WEAPON] = weaponToEquip;
+            }
+            else
+            {
+                throw new InvalidWeaponException(weaponToEquip);
             }
         }
 
@@ -62,16 +64,19 @@ namespace RPG_Characters
         {
             if (equippableItems.IsDefined(armorToEquip.Type))
             {
-
+                Equipments[Slot.SLOT_WEAPON] = armorToEquip;
             }
-            throw new NotImplementedException();
+            else
+            {
+                throw new InvalidArmorException(armorToEquip);
+            }
         }
         public override double GetDPS()
         {
-            if (Equipments[Slot.Weapon] != null)
+            if (Equipments[Slot.SLOT_WEAPON] != null)
             {
                 //Console.WriteLine("BasePrimaryAttributes.Strength: ", BasePrimaryAttributes.Strength);
-                return Equipments[Slot.Weapon].GetDPS() + 1 + (double)BasePrimaryAttributes.Strength / 100;
+                return Equipments[Slot.SLOT_WEAPON].GetDPS() + 1 + (double)BasePrimaryAttributes.Strength / 100;
             }
             Console.WriteLine("BasePrimaryAttributes.Strength: " + BasePrimaryAttributes.Strength);
             return 1 + (double)BasePrimaryAttributes.Strength / 100;

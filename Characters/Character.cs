@@ -15,10 +15,7 @@ namespace RPG_Characters
 
         public enum Slot
         {
-            Head,
-            Body,
-            Legs,
-            Weapon
+            SLOT_HEAD, SLOT_BODY, SLOT_LEGS, SLOT_WEAPON
         }
         /// <summary>
         /// Increse character level by 1
@@ -73,9 +70,9 @@ namespace RPG_Characters
                 "DPS: {8}", 
                 Name, 
                 Level, 
-                BasePrimaryAttributes.Strength,
-                BasePrimaryAttributes.Dexterity,
-                BasePrimaryAttributes.Intelligence,
+                BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength,
+                BasePrimaryAttributes.Dexterity + TotalPrimaryAttributes.Dexterity,
+                BasePrimaryAttributes.Intelligence + TotalPrimaryAttributes.Intelligence,
                 SecondaryAttributes.Health,
                 SecondaryAttributes.ArmorRating,
                 SecondaryAttributes.ElementalResistance,

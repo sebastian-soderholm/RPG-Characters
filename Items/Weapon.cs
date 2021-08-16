@@ -20,13 +20,13 @@ namespace RPG_Characters
 
         public enum WeaponType
         {
-            Axe,
-            Bow,
-            Dagger,
-            Hammer,
-            Staff,
-            Sword,
-            Wand,
+            WEAPON_AXE,
+            WEAPON_BOW,
+            WEAPON_DAGGER,
+            WEAPON_HAMMER,
+            WEAPON_STAFF,
+            WEAPON_SWORD,
+            WEAPON_WAND,
         }
         public override int GetDPS()
         {

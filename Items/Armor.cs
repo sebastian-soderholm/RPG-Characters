@@ -11,10 +11,10 @@ namespace RPG_Characters
         public ArmorType Type { get; set; }
         public enum ArmorType
         {
-            Cloth,
-            Leather,
-            Mail,
-            Plate
+            ARMOR_CLOTH,
+            ARMOR_LEATHER,
+            ARMOR_MAIL,
+            ARMOR_PLATE
         }
     }
 }

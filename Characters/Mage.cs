@@ -29,10 +29,7 @@ namespace RPG_Characters
             throw new NotImplementedException();
         }
 
-        public override bool EquipPermitted(Item item)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public override double GetDPS()
         {

@@ -5,16 +5,13 @@ using System.Text;
 
 namespace RPG_Characters
 {
-    /// <summary>
-    /// Character
-    /// </summary>
     public abstract class Character
     {
         public abstract string Name { get; set; }
         public abstract int Level { get; set; }
-        public PrimaryAttribute PrimaryAttribute { get; set; }
-        public SecondaryAttribute SecondaryAttribute { get; set; }
-        public abstract StringBuilder StatsStringBuilder { get; set; }
+        public abstract PrimaryAttributes BasePrimaryAttribute { get; set; }
+        public abstract PrimaryAttributes TotalPrimaryAttribute { get; set; }
+        public abstract SecondaryAttributes SecondaryAttribute { get; set; }
         public abstract Dictionary<Slot, Item> Equipments { get; set; }
         public enum Slot
         {
@@ -62,7 +59,9 @@ namespace RPG_Characters
         /// <returns>Character stats as a string</returns>
         public virtual string GetStatsString()
         {
-            return this.StatsStringBuilder.AppendFormat(
+            StringBuilder statsStringBuilder = new StringBuilder();
+
+            return statsStringBuilder.AppendFormat(
                 "Character name: {0}\n" +
                 "Character level: {1}\n" +
                 "Strength: {2}\n" +
@@ -74,10 +73,10 @@ namespace RPG_Characters
                 "DPS: {8}", 
                 this.Name, 
                 this.Level, 
-                this.PrimaryAttribute,
-                this.PrimaryAttribute.Strength,
-                this.PrimaryAttribute.Dexterity,
-                this.PrimaryAttribute.Intelligence,
+                this.BasePrimaryAttribute,
+                this.BasePrimaryAttribute.Strength,
+                this.BasePrimaryAttribute.Dexterity,
+                this.BasePrimaryAttribute.Intelligence,
                 this.SecondaryAttribute.Health,
                 this.SecondaryAttribute.ArmorRating,
                 this.SecondaryAttribute.ElementalResistance,

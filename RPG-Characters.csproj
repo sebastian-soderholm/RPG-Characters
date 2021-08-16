@@ -6,13 +6,4 @@
     <RootNamespace>RPG_Characters</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Characters\**" />
-    <Compile Remove="Items\**" />
-    <EmbeddedResource Remove="Characters\**" />
-    <EmbeddedResource Remove="Items\**" />
-    <None Remove="Characters\**" />
-    <None Remove="Items\**" />
-  </ItemGroup>
-
 </Project>

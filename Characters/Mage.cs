@@ -9,7 +9,9 @@ namespace RPG_Characters
     {
         public override string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override int Level { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override StringBuilder StatsStringBuilder { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override PrimaryAttributes BasePrimaryAttribute { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override PrimaryAttributes TotalPrimaryAttribute { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override SecondaryAttributes SecondaryAttribute { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override Dictionary<Slot, Item> Equipments { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override void Attack(Character targetCharacter)

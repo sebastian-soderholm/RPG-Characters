@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG_Characters
 {
-    public class PrimaryAttribute
+    public class PrimaryAttributes
     {
         public int Vitality { get; set; }
         public int Strength { get; set; }

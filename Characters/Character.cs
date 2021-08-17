@@ -21,7 +21,6 @@ namespace RPG_Characters
         /// </summary>
         public SecondaryAttributes SecondaryAttributes { get; set; }
         public Dictionary<Slot, Item> Equipment { get; set; }
-
         public enum Slot
         {
             SLOT_HEAD, SLOT_BODY, SLOT_LEGS, SLOT_WEAPON
@@ -36,6 +35,11 @@ namespace RPG_Characters
         /// </summary>
         /// <param name="targetCharacter">Character instance that the attack is directed towards</param>
         public abstract void Attack(ref Character targetCharacter);
+        /// <summary>
+        /// Calculate the actual damage inflicted when being attacked after armor rating is calculated.
+        /// </summary>
+        /// <param name="damageToDefend">The amount of damage inflicted before armor rating calculation</param>
+        public abstract void DefendAttack(double damageToDefend);
         /// <summary>
         /// Replace current weapon in Equipment property
         /// </summary>

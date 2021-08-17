@@ -20,7 +20,7 @@ namespace RPG_Characters
             Name = name;
             Level = 1;
             BasePrimaryAttributes = new PrimaryAttributes(5, 2, 1, 10);
-            TotalPrimaryAttributes = new PrimaryAttributes(0,0,0,0);
+            TotalPrimaryAttributes = new PrimaryAttributes(0, 0, 0, 0);
 
             SecondaryAttributes = new SecondaryAttributes(
                 10 * BasePrimaryAttributes.Vitality, 
@@ -39,38 +39,32 @@ namespace RPG_Characters
 
         public override void Attack(ref Character targetCharacter)
         {
-            throw new NotImplementedException();
+            targetCharacter.DefendAttack(GetDPS());
+        }
+        public override void DefendAttack(double damageToDefend)
+        {
+            SecondaryAttributes.Health -= damageToDefend - SecondaryAttributes.ArmorRating;
         }
 
         public override void Equip(Weapon weaponToEquip)
         {
             if (equippableItems.IsDefined(weaponToEquip.Type))
-            {
                 Equipment[Slot.SLOT_WEAPON] = weaponToEquip;
-            }
             else
-            {
                 throw new InvalidWeaponException(weaponToEquip);
-            }
         }
 
         public override void Equip(Armor armorToEquip)
         {
             if (equippableItems.IsDefined(armorToEquip.Type))
-            {
                 Equipment[Slot.SLOT_WEAPON] = armorToEquip;
-            }
             else
-            {
                 throw new InvalidArmorException(armorToEquip);
-            }
         }
         public override double GetDPS()
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
-            {
                 return Equipment[Slot.SLOT_WEAPON].GetDPS() + 1 + (double)BasePrimaryAttributes.Strength / 100;
-            }
             return 1 + (double)BasePrimaryAttributes.Strength / 100;
         }
 

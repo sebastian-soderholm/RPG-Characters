@@ -39,11 +39,13 @@ namespace RPG_Characters
 
         public override void Attack(ref Character targetCharacter)
         {
-            targetCharacter.DefendAttack(GetDPS());
+            targetCharacter.TakeDamage(GetDPS());
         }
-        public override void DefendAttack(double damageToDefend)
+        public override void TakeDamage(double damageToDefend)
         {
             SecondaryAttributes.Health -= damageToDefend - SecondaryAttributes.ArmorRating;
+            if (SecondaryAttributes.Health < 0)
+                Console.WriteLine($"Character {Name} died!");
         }
 
         public override void Equip(Weapon weaponToEquip)

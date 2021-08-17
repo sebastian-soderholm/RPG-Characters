@@ -36,10 +36,10 @@ namespace RPG_Characters
         /// <param name="targetCharacter">Character instance that the attack is directed towards</param>
         public abstract void Attack(ref Character targetCharacter);
         /// <summary>
-        /// Calculate the actual damage inflicted when being attacked after armor rating is calculated.
+        /// Calculate the actual damage inflicted and remove calculated damage from character's Health attribute
         /// </summary>
         /// <param name="damageToDefend">The amount of damage inflicted before armor rating calculation</param>
-        public abstract void DefendAttack(double damageToDefend);
+        public abstract void TakeDamage(double damageToDefend);
         /// <summary>
         /// Replace current weapon in Equipment property
         /// </summary>

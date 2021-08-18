@@ -20,70 +20,90 @@ namespace RPG_Characters
         /// Secondary attributes are calculated based on BasePrimaryAttributes and equipped items
         /// </summary>
         public SecondaryAttributes SecondaryAttributes { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public Dictionary<Slot, Item> Equipment { get; set; }
         public enum Slot
         {
             SLOT_HEAD, SLOT_BODY, SLOT_LEGS, SLOT_WEAPON
         }
         /// <summary>
-        /// Increse character level by 1
+        /// Increase Character's level by given value.
+        /// </summary>
+        /// <param name="levelIncrease">Number by which character's level should be increased</param>
+        /// <exception cref="ArgumentException">ArgumentException</exception>
+        public void IncreaseLevelBy(int levelIncrease)
+        {
+            if (levelIncrease <= 0)
+                throw new ArgumentException();
+            else
+                Level += levelIncrease;
+        }
+        /// <summary>
+        /// Increase character level by 1
         /// Increase primary attributes based on character type
         /// </summary>
-        public abstract void LevelUp();
+        public void LevelUp()
+        {
+            Level++;
+            BasePrimaryAttributes.Strength += 3;
+            BasePrimaryAttributes.Dexterity += 2;
+            BasePrimaryAttributes.Intelligence += 1;
+            BasePrimaryAttributes.Vitality += 5;
+        }
         /// <summary>
         /// Print the damage character inflicts based on calculated DPS
         /// </summary>
         /// <param name="targetCharacter">Character instance that the attack is directed towards</param>
-        public abstract void Attack(ref Character targetCharacter);
+        public void Attack(Character targetCharacter)
+        {
+            targetCharacter.TakeDamage(GetDPS());
+        }
         /// <summary>
         /// Calculate the actual damage inflicted and remove calculated damage from character's Health attribute
         /// </summary>
-        /// <param name="damageToDefend">The amount of damage inflicted before armor rating calculation</param>
-        public abstract void TakeDamage(double damageToDefend);
+        /// <param name="damageToDefend">The amount of damage attacker tries to inflict</param>
+        public void TakeDamage(double damageToDefend)
+        {
+            //Calculate actual inflicted damage and subtract value from defender's Health attribute
+            SecondaryAttributes.Health -= Math.Abs(damageToDefend - SecondaryAttributes.ArmorRating / 100);
+        }
         /// <summary>
         /// Replace current weapon in Equipment property
         /// </summary>
         /// <param name="weapon">Weapon to be equipped</param>
-        /// <exception cref="">InvalidWeaponException</exception>
+        /// <exception cref="InvalidWeaponException">InvalidWeaponException</exception>
         public abstract void Equip(Weapon weaponToEquip);
         /// <summary>
         /// Replace current armor in Equipment property
         /// </summary>
         /// <param name="armor">Armor to be equipped</param>
-        /// <exception cref="">InvalidArmorException</exception>
-        public abstract void Equip(Armor armorToEquip);
+        /// <exception cref="InvalidArmorException">InvalidArmorException</exception>
+        public abstract void Equip(Armor armorToEquip, Slot armorSlot);
         /// <summary>
         /// Calculate and return character's damage per second (DPS)
         /// </summary>
-        /// <returns>Character's DPS as float</returns>
+        /// <returns>Character's DPS as double</returns>
         public abstract double GetDPS();
         /// <summary>
-        /// Create a summary of character stats with StringBuilder
+        /// Return summary of Character stats
         /// </summary>
         /// <returns>Character stats as a string</returns>
-        public virtual string GetStatsString()
+        public override string ToString()
         {
             StringBuilder statsStringBuilder = new StringBuilder();
 
             return statsStringBuilder.AppendFormat(
-                "Character name: {0}\n" +
-                "Character level: {1}\n" +
-                "Strength: {2}\n" +
-                "Dexterity: {3}\n" +
-                "Intelligence: {4}\n" +
-                "Health: {5}\n" +
-                "Armor Rating: {6}\n" +
-                "Elemental Resistance: {7}\n" +
-                "DPS: {8}", 
-                Name, 
-                Level, 
-                BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength,
-                BasePrimaryAttributes.Dexterity + TotalPrimaryAttributes.Dexterity,
-                BasePrimaryAttributes.Intelligence + TotalPrimaryAttributes.Intelligence,
-                SecondaryAttributes.Health,
-                SecondaryAttributes.ArmorRating,
-                SecondaryAttributes.ElementalResistance,
-                GetDPS()
+                $"Character name: {Name}\n" +
+                $"Character level: {Level}\n" +
+                $"Strength: {BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength}\n" +
+                $"Dexterity: {BasePrimaryAttributes.Dexterity + TotalPrimaryAttributes.Dexterity}\n" +
+                $"Intelligence: {BasePrimaryAttributes.Intelligence + TotalPrimaryAttributes.Intelligence}\n" +
+                $"Health: {SecondaryAttributes.Health}\n" +
+                $"Armor Rating: {SecondaryAttributes.ArmorRating}\n" +
+                $"Elemental Resistance: {SecondaryAttributes.ElementalResistance}\n" +
+                $"DPS: {GetDPS()}\n" + "\n"
              ).ToString();
         }
     }

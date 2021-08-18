@@ -28,6 +28,12 @@ namespace RPG_Characters
         {
             SLOT_HEAD, SLOT_BODY, SLOT_LEGS, SLOT_WEAPON
         }
+
+        /// <summary>
+        /// Increase Character's level by 1
+        /// Increase primary attributes based on character type
+        /// </summary>
+        public abstract void LevelUp();
         /// <summary>
         /// Increase Character's level by given value.
         /// </summary>
@@ -36,29 +42,28 @@ namespace RPG_Characters
         public void IncreaseLevelBy(int levelIncrease)
         {
             if (levelIncrease <= 0)
+            {
                 throw new ArgumentException();
+            }
             else
-                Level += levelIncrease;
+            {
+                for (int i = 0; i<levelIncrease; i++)
+                {
+                    Level += levelIncrease;
+                    LevelUp();
+                }
+                
+            }
+                
         }
+        
         /// <summary>
-        /// Increase character level by 1
-        /// Increase primary attributes based on character type
-        /// </summary>
-        public void LevelUp()
-        {
-            Level++;
-            BasePrimaryAttributes.Strength += 3;
-            BasePrimaryAttributes.Dexterity += 2;
-            BasePrimaryAttributes.Intelligence += 1;
-            BasePrimaryAttributes.Vitality += 5;
-        }
-        /// <summary>
-        /// Print the damage character inflicts based on calculated DPS
+        /// Return the physical damage character inflicts based on calculated DPS and targets armor rating
         /// </summary>
         /// <param name="targetCharacter">Character instance that the attack is directed towards</param>
-        public void Attack(Character targetCharacter)
+        public int Attack()
         {
-            targetCharacter.TakeDamage(GetDPS());
+            return GetDPS();
         }
         /// <summary>
         /// Calculate the actual damage inflicted and remove calculated damage from character's Health attribute
@@ -67,7 +72,7 @@ namespace RPG_Characters
         public void TakeDamage(double damageToDefend)
         {
             //Calculate actual inflicted damage and subtract value from defender's Health attribute
-            SecondaryAttributes.Health -= Math.Abs(damageToDefend - SecondaryAttributes.ArmorRating / 100);
+            //SecondaryAttributes.Health -= Math.Abs(damageToDefend - SecondaryAttributes.ArmorRating / 100);
         }
         /// <summary>
         /// Replace current weapon in Equipment property
@@ -85,7 +90,7 @@ namespace RPG_Characters
         /// Calculate and return character's damage per second (DPS)
         /// </summary>
         /// <returns>Character's DPS as double</returns>
-        public abstract double GetDPS();
+        public abstract int GetDPS();
         /// <summary>
         /// Return summary of Character stats
         /// </summary>

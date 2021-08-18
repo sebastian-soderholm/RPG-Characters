@@ -40,6 +40,19 @@ namespace RPG_Characters
             };
         }
 
+        /// <summary>
+        /// Increase Mage's level by 1
+        /// Increase primary attributes based on character type
+        /// </summary>
+        public override void LevelUp()
+        {
+            Level++;
+            BasePrimaryAttributes.Strength += 1;
+            BasePrimaryAttributes.Dexterity += 1;
+            BasePrimaryAttributes.Intelligence += 5;
+            BasePrimaryAttributes.Vitality += 3;
+        }
+
         public override void Equip(Weapon weaponToEquip)
         {
             if (equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
@@ -76,12 +89,12 @@ namespace RPG_Characters
         /// Calculate Mage's damage per second (DPS). Primary attribute strength affects Mage's DPS.
         /// </summary>
         /// <returns>Mage's damage per second (DPS)</returns>
-        public override double GetDPS()
+        public override int GetDPS()
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
             {
                 return Equipment[Slot.SLOT_WEAPON].GetDPS() +
-                    1 + (double)(BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength) / 100;
+                    1 + (BasePrimaryAttributes.Intelligence + TotalPrimaryAttributes.Intelligence) / 100;
             }
             return 1;
         }

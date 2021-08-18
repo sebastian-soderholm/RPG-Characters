@@ -8,7 +8,7 @@ namespace RPG_Characters
 {
     public class SecondaryAttributes
     {
-        public double Health { get; set; }
+        public int Health { get; set; }
         public int ArmorRating { get; set; }
         public int ElementalResistance { get; set; }
         public static SecondaryAttributes operator + (SecondaryAttributes lhs, SecondaryAttributes rhs)
@@ -38,7 +38,7 @@ namespace RPG_Characters
         }
 
 
-        public SecondaryAttributes(double health, int armorRating, int elementalResistance)
+        public SecondaryAttributes(int health, int armorRating, int elementalResistance)
         {
             Health = health;
             ArmorRating = armorRating;

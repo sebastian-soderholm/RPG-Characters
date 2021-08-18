@@ -14,14 +14,17 @@ namespace RPG_Characters
 
             for (int i=0; i<100; i++)
             {
-                AttackWarrior.Attack(DefendWarrior);
-                //If Character died from attack, print info and delete instance 
-                if (DefendWarrior.SecondaryAttributes.Health <= 0)
-                {
-                    Console.WriteLine($"Character {DefendWarrior.Name} died!");
-                    DefendWarrior = null;
-                    break;
-                }
+
+                Console.WriteLine($"AttackWarrior inflicted {AttackWarrior.Attack()} amount of damage!");
+
+                ////If Character died from attack, print info and delete instance 
+                //if (DefendWarrior.SecondaryAttributes.Health <= 0)
+                //{
+                //    Console.WriteLine($"Character {DefendWarrior.Name} died!");
+                //    DefendWarrior = null;
+                //    break;
+                //}
+
                 AttackWarrior.LevelUp();
                 Console.WriteLine(DefendWarrior.ToString());
             }

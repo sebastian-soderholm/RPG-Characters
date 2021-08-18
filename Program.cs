@@ -6,39 +6,32 @@ namespace RPG_Characters
     {
         static void Main(string[] args)
         {
-            Warrior AttackWarrior = new Warrior("AttackWarrior");
-            Warrior DefendWarrior = new Warrior("DefendWarrior");
+            Armor testArmor = new Armor("Common cloth", 1, Armor.ArmorType.ARMOR_CLOTH, 2, 2, 1, 2);
+            Weapon testWeapon = new Weapon("TestAxe", 1, 3, 2, Weapon.WeaponType.WEAPON_AXE);
+            Warrior warrior = new Warrior("TestWarrior");
+            double expect = 7 * (1 + (((5 + 2) / 100)));
 
-            //Console.WriteLine(AttackWarrior.GetStatsString());
-            Console.WriteLine(DefendWarrior.ToString());
+            //Act
+            warrior.Equip(testWeapon);
+            warrior.Equip(testArmor, Character.Slot.SLOT_BODY);
+            Console.WriteLine("This is the character DPS: " + testWeapon.GetDPS());
 
-            for (int i=0; i<100; i++)
-            {
+            //for (int i=0; i<3; i++)
+            //{
 
-                Console.WriteLine($"AttackWarrior inflicted {AttackWarrior.Attack()} amount of damage!");
+            //    Console.WriteLine($"AttackWarrior inflicted {AttackWarrior.Attack()} amount of damage!");
 
-                ////If Character died from attack, print info and delete instance 
-                //if (DefendWarrior.SecondaryAttributes.Health <= 0)
-                //{
-                //    Console.WriteLine($"Character {DefendWarrior.Name} died!");
-                //    DefendWarrior = null;
-                //    break;
-                //}
+            //    ////If Character died from attack, print info and delete instance 
+            //    //if (DefendWarrior.SecondaryAttributes.Health <= 0)
+            //    //{
+            //    //    Console.WriteLine($"Character {DefendWarrior.Name} died!");
+            //    //    DefendWarrior = null;
+            //    //    break;
+            //    //}
 
-                AttackWarrior.LevelUp();
-                Console.WriteLine(DefendWarrior.ToString());
-            }
-            
-            try
-            {
-
-            }
-            catch (InvalidWeaponException e)
-            {
-                //Character cannot equip item
-                Console.WriteLine($"Character cannot equip item: {e}");
-
-            }
+            //    AttackWarrior.LevelUp();
+            //    Console.WriteLine(DefendWarrior.ToString());
+            //}
             
         }
     }

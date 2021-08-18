@@ -52,6 +52,10 @@ namespace RPG_Characters
             BasePrimaryAttributes.Intelligence += 1;
             BasePrimaryAttributes.Vitality += 2;
         }
+        /// <summary>
+        /// Equip weapon if type and level meet Ranger's requirements
+        /// </summary>
+        /// <param name="weaponToEquip">Weapon that Ranger tries to equip</param>
         public override string Equip(Weapon weaponToEquip)
         {
             if (equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
@@ -90,7 +94,7 @@ namespace RPG_Characters
         /// Calculate Ranger's damage per second (DPS). Primary attribute strength affects Ranger's DPS.
         /// </summary>
         /// <returns>Ranger's damage per second (DPS)</returns>
-        public override float GetDPS()
+        public override double GetDPS()
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
             {

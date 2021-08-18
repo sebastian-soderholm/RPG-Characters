@@ -53,6 +53,10 @@ namespace RPG_Characters
             BasePrimaryAttributes.Vitality += 5;
         }
 
+        /// <summary>
+        /// Equip weapon if type and level meet Warrior's requirements
+        /// </summary>
+        /// <param name="weaponToEquip">Weapon that Warrior tries to equip</param>
         public override string Equip(Weapon weaponToEquip)
         {
             if (equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
@@ -80,6 +84,7 @@ namespace RPG_Characters
                 Equipment[Slot.SLOT_WEAPON] = armorToEquip;
                 //Armor increases character's TotalPrimaryAttributes
                 TotalPrimaryAttributes += armorToEquip.PrimaryItemAttributes;
+                Console.WriteLine("TotalPrimaryAttributes: " + TotalPrimaryAttributes);
                 return "New armor equipped!";
             }
             else
@@ -91,15 +96,13 @@ namespace RPG_Characters
         /// Calculate Warrior's damage per second (DPS). Primary attribute strength affects Warrior's DPS.
         /// </summary>
         /// <returns>Warrior's damage per second (DPS)</returns>
-        public override float GetDPS()
+        public override double GetDPS()
         {
-            Item weaponInSlot;
-            if (Equipment[Slot.SLOT_WEAPON] != null && !Equipment.TryGetValue(Slot.SLOT_WEAPON, out weaponInSlot))
+            if (Equipment[Slot.SLOT_WEAPON] != null)
             {
-                return (float) (Equipment[Slot.SLOT_WEAPON].GetDPS() + 
-                    1 + ((BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength) / 100));
+                return Equipment[Slot.SLOT_WEAPON].GetDPS() + 1 + (BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength) / 100;
             }
-            return (float)(1 + ((BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength) / 100));
+            return 1 + ((double)(BasePrimaryAttributes.Strength + (double)TotalPrimaryAttributes.Strength) / 100);
         }
     }
 }

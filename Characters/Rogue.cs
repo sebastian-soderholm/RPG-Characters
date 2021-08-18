@@ -50,6 +50,10 @@ namespace RPG_Characters
             BasePrimaryAttributes.Intelligence += 1;
             BasePrimaryAttributes.Vitality += 3;
         }
+        /// <summary>
+        /// Equip weapon if type and level meet Rogue's requirements
+        /// </summary>
+        /// <param name="weaponToEquip">Weapon that Rogue tries to equip</param>
         public override string Equip(Weapon weaponToEquip)
         {
             if (equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
@@ -89,7 +93,7 @@ namespace RPG_Characters
         /// Calculate Rogue's damage per second (DPS). Primary attribute strength affects Rogue's DPS.
         /// </summary>
         /// <returns>Rogue's damage per second (DPS)</returns>
-        public override float GetDPS()
+        public override double GetDPS()
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
             {

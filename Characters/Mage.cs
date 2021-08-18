@@ -52,7 +52,10 @@ namespace RPG_Characters
             BasePrimaryAttributes.Intelligence += 5;
             BasePrimaryAttributes.Vitality += 3;
         }
-
+        /// <summary>
+        /// Equip weapon if type and level meet Mage's requirements
+        /// </summary>
+        /// <param name="weaponToEquip">Weapon that Mage tries to equip</param>
         public override string Equip(Weapon weaponToEquip)
         {
             if (equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
@@ -91,7 +94,7 @@ namespace RPG_Characters
         /// Calculate Mage's damage per second (DPS). Primary attribute strength affects Mage's DPS.
         /// </summary>
         /// <returns>Mage's damage per second (DPS)</returns>
-        public override float GetDPS()
+        public override double GetDPS()
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
             {

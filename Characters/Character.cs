@@ -24,10 +24,19 @@ namespace RPG_Characters
         /// 
         /// </summary>
         public Dictionary<Slot, Item> Equipment { get; set; }
+
+        public Dictionary<Character, List<Weapon.WeaponType>> CharacterValidWeapon { get; set; }
+        public Dictionary<Character, List<Armor.ArmorType>> CharacterValidArmor { get; set; }
+
         public enum Slot
         {
             SLOT_HEAD, SLOT_BODY, SLOT_LEGS, SLOT_WEAPON
         }
+        public enum CharacterType
+        {
+            CHARACTER_MAGE, CHARACTER_RANGER, CHARACTER_ROGUE, CHARACTER_WARRIOR
+        }
+        //public Dictionary<CharacterType, Dictionary<Weapon.WeaponType, Armor.ArmorType>>()
 
         /// <summary>
         /// Increase Character's level by 1
@@ -61,25 +70,33 @@ namespace RPG_Characters
         /// Return the physical damage character inflicts based on calculated DPS and targets armor rating
         /// </summary>
         /// <param name="targetCharacter">Character instance that the attack is directed towards</param>
-        public float Attack()
+        public double Attack()
         {
             return GetDPS();
         }
-        /// <summary>
-        /// Calculate the actual damage inflicted and remove calculated damage from character's Health attribute
-        /// </summary>
-        /// <param name="damageToDefend">The amount of damage attacker tries to inflict</param>
-        public void TakeDamage(double damageToDefend)
-        {
-            //Calculate actual inflicted damage and subtract value from defender's Health attribute
-            //SecondaryAttributes.Health -= Math.Abs(damageToDefend - SecondaryAttributes.ArmorRating / 100);
-        }
+
         /// <summary>
         /// Replace current weapon in Equipment property
         /// </summary>
         /// <param name="weapon">Weapon to be equipped</param>
         /// <exception cref="InvalidWeaponException">InvalidWeaponException</exception>
         public abstract string Equip(Weapon weaponToEquip);
+        //if (this.GetType() == typeof(RPG_Characters.Warrior))
+        //{
+        //    if (this.GetType().equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
+        //    {
+        //        Equipment[Slot.SLOT_WEAPON] = weaponToEquip;
+        //        return "New weapon equipped!";
+        //    }
+        //    else
+        //    {
+        //        throw new InvalidWeaponException(weaponToEquip);
+        //    }
+        //}
+        //return "";
+
+
+
         /// <summary>
         /// Replace current armor in Equipment property
         /// </summary>
@@ -90,7 +107,7 @@ namespace RPG_Characters
         /// Calculate and return character's damage per second (DPS)
         /// </summary>
         /// <returns>Character's DPS as double</returns>
-        public abstract float GetDPS();
+        public abstract double GetDPS();
         /// <summary>
         /// Return summary of Character stats
         /// </summary>
@@ -101,6 +118,7 @@ namespace RPG_Characters
 
             return statsStringBuilder.AppendFormat(
                 $"Character name: {Name}\n" +
+                $"Character type: {this.GetType()}\n" +
                 $"Character level: {Level}\n" +
                 $"Strength: {BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength}\n" +
                 $"Dexterity: {BasePrimaryAttributes.Dexterity + TotalPrimaryAttributes.Dexterity}\n" +

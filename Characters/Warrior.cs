@@ -7,6 +7,9 @@ namespace RPG_Characters
 {
     public class Warrior : Character
     {
+        /// <summary>
+        /// Types of items that Warriors can equip
+        /// </summary>
         public enum equippableItems
         {
             WEAPON_AXE, WEAPON_HAMMER, WEAPON_SWORD, ARMOR_MAIL, ARMOR_PLATE
@@ -37,47 +40,50 @@ namespace RPG_Characters
             };
         }
 
-        public override void Attack(ref Character targetCharacter)
-        {
-            targetCharacter.TakeDamage(GetDPS());
-        }
-        public override void TakeDamage(double damageToDefend)
-        {
-            SecondaryAttributes.Health -= damageToDefend - SecondaryAttributes.ArmorRating;
-            if (SecondaryAttributes.Health < 0)
-                Console.WriteLine($"Character {Name} died!");
-        }
-
         public override void Equip(Weapon weaponToEquip)
         {
-            if (equippableItems.IsDefined(weaponToEquip.Type))
+            if (equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
+            {
                 Equipment[Slot.SLOT_WEAPON] = weaponToEquip;
+            }
             else
+            {
                 throw new InvalidWeaponException(weaponToEquip);
+            }
         }
-
-        public override void Equip(Armor armorToEquip)
+        /// <summary>
+        /// Equip armor in given Slot if armor type and level meet Warrior's requirements
+        /// </summary>
+        /// <param name="armorToEquip">Armor that warrior tries to equip</param>
+        /// <param name="armorSlot">Slot in which warrier tries to equip armor</param>
+        public override void Equip(Armor armorToEquip, Slot armorSlot)
         {
-            if (equippableItems.IsDefined(armorToEquip.Type))
+            if (equippableItems.IsDefined(armorToEquip.Type) && Level >= armorToEquip.RequiredLevel &&
+                (armorSlot == Slot.SLOT_BODY ||
+                armorSlot == Slot.SLOT_HEAD ||
+                armorSlot == Slot.SLOT_HEAD))
+            {
                 Equipment[Slot.SLOT_WEAPON] = armorToEquip;
+                //Armor increases character's TotalPrimaryAttributes
+                TotalPrimaryAttributes += armorToEquip.PrimaryItemAttributes;
+            }
             else
+            {
                 throw new InvalidArmorException(armorToEquip);
+            }
         }
+        /// <summary>
+        /// Calcvulate Warrior's damage per second (DPS). Primary attribute strength affects Warrior's DPS.
+        /// </summary>
+        /// <returns>Warrior's damage per second (DPS)</returns>
         public override double GetDPS()
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
-                return Equipment[Slot.SLOT_WEAPON].GetDPS() + 1 + (double)BasePrimaryAttributes.Strength / 100;
+            {
+                return Equipment[Slot.SLOT_WEAPON].GetDPS() + 
+                    1 + (double)(BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength) / 100;
+            }
             return 1 + (double)BasePrimaryAttributes.Strength / 100;
         }
-
-        public override void LevelUp()
-        {
-            Level++;
-            BasePrimaryAttributes.Strength += 3;
-            BasePrimaryAttributes.Dexterity += 2;
-            BasePrimaryAttributes.Intelligence += 1;
-            BasePrimaryAttributes.Vitality += 5;
-        }
     }
-
 }

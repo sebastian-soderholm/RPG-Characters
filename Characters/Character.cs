@@ -11,7 +11,7 @@ namespace RPG_Characters
         /// <summary>
         /// BasePrimaryAttributes are calculated based on character type and level
         /// </summary>
-        protected PrimaryAttributes BasePrimaryAttributes { get; set; }
+        public PrimaryAttributes BasePrimaryAttributes { get; set; }
         /// <summary>
         /// TotalPrimaryAttributes = BasePrimaryAttributes + equipment bonuses
         /// </summary>

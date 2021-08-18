@@ -73,7 +73,7 @@ namespace RPG_Characters
             }
         }
         /// <summary>
-        /// Calcvulate Warrior's damage per second (DPS). Primary attribute strength affects Warrior's DPS.
+        /// Calculate Warrior's damage per second (DPS). Primary attribute strength affects Warrior's DPS.
         /// </summary>
         /// <returns>Warrior's damage per second (DPS)</returns>
         public override double GetDPS()
@@ -83,7 +83,7 @@ namespace RPG_Characters
                 return Equipment[Slot.SLOT_WEAPON].GetDPS() + 
                     1 + (double)(BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength) / 100;
             }
-            return 1 + (double)BasePrimaryAttributes.Strength / 100;
+            return 1;
         }
     }
 }

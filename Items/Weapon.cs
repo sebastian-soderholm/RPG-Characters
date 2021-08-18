@@ -21,10 +21,13 @@ namespace RPG_Characters
             WEAPON_SWORD,
             WEAPON_WAND,
         }
-        public Weapon(int baseDamage, int attacksPerSecond)
+        public Weapon(String name, int requiredLevel, int baseDamage, int attacksPerSecond, WeaponType weaponType)
         {
+            Name = name;
+            RequiredLevel = requiredLevel;
             BaseDamage = baseDamage;
             AttacksPerSecond = attacksPerSecond;
+            Type = weaponType;
         }
         public override int GetDPS()
         {

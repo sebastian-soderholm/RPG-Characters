@@ -61,7 +61,7 @@ namespace RPG_Characters
         /// Return the physical damage character inflicts based on calculated DPS and targets armor rating
         /// </summary>
         /// <param name="targetCharacter">Character instance that the attack is directed towards</param>
-        public int Attack()
+        public float Attack()
         {
             return GetDPS();
         }
@@ -79,18 +79,18 @@ namespace RPG_Characters
         /// </summary>
         /// <param name="weapon">Weapon to be equipped</param>
         /// <exception cref="InvalidWeaponException">InvalidWeaponException</exception>
-        public abstract void Equip(Weapon weaponToEquip);
+        public abstract string Equip(Weapon weaponToEquip);
         /// <summary>
         /// Replace current armor in Equipment property
         /// </summary>
         /// <param name="armor">Armor to be equipped</param>
         /// <exception cref="InvalidArmorException">InvalidArmorException</exception>
-        public abstract void Equip(Armor armorToEquip, Slot armorSlot);
+        public abstract string Equip(Armor armorToEquip, Slot armorSlot);
         /// <summary>
         /// Calculate and return character's damage per second (DPS)
         /// </summary>
         /// <returns>Character's DPS as double</returns>
-        public abstract int GetDPS();
+        public abstract float GetDPS();
         /// <summary>
         /// Return summary of Character stats
         /// </summary>

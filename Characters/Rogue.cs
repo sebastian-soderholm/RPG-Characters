@@ -10,7 +10,7 @@ namespace RPG_Characters
         /// </summary>
         public enum equippableItems
         {
-            WEAPON_AXE, WEAPON_HAMMER, WEAPON_SWORD, ARMOR_MAIL, ARMOR_PLATE
+            WEAPON_DAGGER, WEAPON_SWORD, ARMOR_MAIL, ARMOR_LEATHER
         }
         /// <summary>
         /// Create Rogue instance based on level 1 stats
@@ -50,15 +50,17 @@ namespace RPG_Characters
             BasePrimaryAttributes.Intelligence += 1;
             BasePrimaryAttributes.Vitality += 3;
         }
-        public override void Equip(Weapon weaponToEquip)
+        public override string Equip(Weapon weaponToEquip)
         {
             if (equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
             {
                 Equipment[Slot.SLOT_WEAPON] = weaponToEquip;
+                return "New weapon equipped!";
             }
             else
             {
                 throw new InvalidWeaponException(weaponToEquip);
+                return "New weapon equipped!";
             }
         }
         /// <summary>
@@ -66,7 +68,7 @@ namespace RPG_Characters
         /// </summary>
         /// <param name="armorToEquip">Armor that Rogue tries to equip</param>
         /// <param name="armorSlot">Slot in which warrier tries to equip armor</param>
-        public override void Equip(Armor armorToEquip, Slot armorSlot)
+        public override string Equip(Armor armorToEquip, Slot armorSlot)
         {
             if (equippableItems.IsDefined(armorToEquip.Type) && Level >= armorToEquip.RequiredLevel &&
                 (armorSlot == Slot.SLOT_BODY ||
@@ -76,6 +78,7 @@ namespace RPG_Characters
                 Equipment[Slot.SLOT_WEAPON] = armorToEquip;
                 //Armor increases character's TotalPrimaryAttributes
                 TotalPrimaryAttributes += armorToEquip.PrimaryItemAttributes;
+                return "New armor equipped!";
             }
             else
             {
@@ -86,7 +89,7 @@ namespace RPG_Characters
         /// Calculate Rogue's damage per second (DPS). Primary attribute strength affects Rogue's DPS.
         /// </summary>
         /// <returns>Rogue's damage per second (DPS)</returns>
-        public override int GetDPS()
+        public override float GetDPS()
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
             {

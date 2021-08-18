@@ -18,8 +18,11 @@ namespace RPG_Characters
             ARMOR_MAIL,
             ARMOR_PLATE
         }
-        public Armor(int strength, int dexterity, int intelligence, int vitality)
+        public Armor(string name, int requiredLevel, ArmorType armorType, int strength, int dexterity, int intelligence, int vitality)
         {
+            Name = name;
+            RequiredLevel = requiredLevel;
+            Type = armorType;
             PrimaryItemAttributes = new PrimaryAttributes(strength, dexterity, intelligence, vitality);
         }
     }

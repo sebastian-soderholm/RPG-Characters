@@ -6,13 +6,6 @@ namespace RPG_Characters
 {
     public abstract class Character
     {
-    //    public virtual Character() {
-    //        Dictionary<Character, List<Weapon.WeaponType>> CharacterValidWeapon = new Dictionary<Character, List<Weapon.WeaponType>>()
-    //        {
-    //            Warrior, new List<Weapon.WeaponType>(Weapon.WeaponType.WEAPON_AXE, Weapon.WeaponType.WEAPON_HAMMER, Weapon.WeaponType.WEAPON_SWORD)
-    //        };
-    //}
-
         public string Name { get; set; }
         public int Level { get; set; }
         /// <summary>

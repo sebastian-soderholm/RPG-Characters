@@ -98,7 +98,7 @@ namespace RPG_Characters
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
             {
-                return Equipment[Slot.SLOT_WEAPON].GetDPS() + 1 + (BasePrimaryAttributes.Intelligence + TotalPrimaryAttributes.Intelligence) / 100;
+                return (double)((double)Equipment[Slot.SLOT_WEAPON].GetDPS() + 1.0 + ((double)BasePrimaryAttributes.Intelligence + (double)TotalPrimaryAttributes.Intelligence) / 100);
             }
             return 1 + ((double)(BasePrimaryAttributes.Intelligence + (double)TotalPrimaryAttributes.Intelligence) / 100);
         }

@@ -24,12 +24,13 @@ namespace RPG_Characters
         /// 
         /// </summary>
         public Dictionary<Slot, Item> Equipment { get; set; }
-
+        /// <summary>
+        /// Slots used to carry items in. Only SLOT_WEAPON can store a weapon, other slots store Armor.
+        /// </summary>
         public enum Slot
         {
             SLOT_HEAD, SLOT_BODY, SLOT_LEGS, SLOT_WEAPON
         }
-
         /// <summary>
         /// Increase Character's level by 1
         /// Increase primary attributes based on character type

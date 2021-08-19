@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RPG_Characters.Mage">
+    <Position X="5.75" Y="7" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="RPG_Characters.Mage.equippableItems" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Characters\Mage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAQAAAAAAAA=</HashCode>
+      <FileName>Characters\Mage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.Character">
+    <Position X="8.5" Y="2.75" Width="2.75" />
+    <NestedTypes>
+      <Enum Name="RPG_Characters.Character.Slot" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Character.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAQAAAAAAEAAAAAAYBAIAAAAAhAAQABAAAAAA=</HashCode>
+      <FileName>Characters\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.PrimaryAttributes">
+    <Position X="6.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAiAAAAAAAAAwAAAAAAAAABAAAAAAAAAAAAAAiA=</HashCode>
+      <FileName>Attributes\PrimaryAttributes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.RPG_Game">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.Ranger">
+    <Position X="3.25" Y="7" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="RPG_Characters.Ranger.equippableItems" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Characters\Ranger.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAQAAAAAAAA=</HashCode>
+      <FileName>Characters\Ranger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.Rogue">
+    <Position X="11" Y="7" Width="2.5" />
+    <NestedTypes>
+      <Enum Name="RPG_Characters.Rogue.equippableItems" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Characters\Rogue.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAQAAAAAAAA=</HashCode>
+      <FileName>Characters\Rogue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.Warrior">
+    <Position X="8.25" Y="7" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="RPG_Characters.Warrior.equippableItems" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Characters\Warrior.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAQAAAAAAAA=</HashCode>
+      <FileName>Characters\Warrior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.Item" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Items\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.Weapon" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAQQAAIAAAAA=</HashCode>
+      <FileName>Items\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.Armor" Collapsed="true">
+    <Position X="2.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Items\Armor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RPG_Characters.SecondaryAttributes" Collapsed="true">
+    <Position X="4" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAECAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAiA=</HashCode>
+      <FileName>Attributes\SecondaryAttributes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -65,7 +65,6 @@ namespace RPG_Characters
             }
                 
         }
-        
         /// <summary>
         /// Return the physical damage character inflicts based on calculated DPS and targets armor rating
         /// </summary>
@@ -74,29 +73,12 @@ namespace RPG_Characters
         {
             return GetDPS();
         }
-
         /// <summary>
         /// Replace current weapon in Equipment property
         /// </summary>
         /// <param name="weapon">Weapon to be equipped</param>
         /// <exception cref="InvalidWeaponException">InvalidWeaponException</exception>
         public abstract string Equip(Weapon weaponToEquip);
-        //if (this.GetType() == typeof(RPG_Characters.Warrior))
-        //{
-        //    if (this.GetType().equippableItems.IsDefined(weaponToEquip.Type) && Level >= weaponToEquip.RequiredLevel)
-        //    {
-        //        Equipment[Slot.SLOT_WEAPON] = weaponToEquip;
-        //        return "New weapon equipped!";
-        //    }
-        //    else
-        //    {
-        //        throw new InvalidWeaponException(weaponToEquip);
-        //    }
-        //}
-        //return "";
-
-
-
         /// <summary>
         /// Replace current armor in Equipment property
         /// </summary>
@@ -118,7 +100,6 @@ namespace RPG_Characters
 
             return statsStringBuilder.AppendFormat(
                 $"Character name: {Name}\n" +
-                $"Character type: {this.GetType()}\n" +
                 $"Character level: {Level}\n" +
                 $"Strength: {BasePrimaryAttributes.Strength + TotalPrimaryAttributes.Strength}\n" +
                 $"Dexterity: {BasePrimaryAttributes.Dexterity + TotalPrimaryAttributes.Dexterity}\n" +

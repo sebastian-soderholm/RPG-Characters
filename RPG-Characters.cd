@@ -22,11 +22,6 @@
           <NewMemberFileName>Character.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
-      <Enum Name="RPG_Characters.Character.CharacterType" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Characters\Character.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAACAQAAAAAAEEAAAABYBAIAAAAAhAAQABAAAAAA=</HashCode>

@@ -25,17 +25,9 @@ namespace RPG_Characters
         /// </summary>
         public Dictionary<Slot, Item> Equipment { get; set; }
 
-        //Create lists of suitable items for characters to handle equip() method in base class
-        public Dictionary<Character, List<Weapon.WeaponType>> CharacterValidWeapon { get; set; }
-        public Dictionary<Character, List<Armor.ArmorType>> CharacterValidArmor { get; set; }
-
         public enum Slot
         {
             SLOT_HEAD, SLOT_BODY, SLOT_LEGS, SLOT_WEAPON
-        }
-        public enum CharacterType
-        {
-            CHARACTER_MAGE, CHARACTER_RANGER, CHARACTER_ROGUE, CHARACTER_WARRIOR
         }
 
         /// <summary>

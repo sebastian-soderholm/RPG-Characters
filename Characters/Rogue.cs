@@ -64,7 +64,6 @@ namespace RPG_Characters
             else
             {
                 throw new InvalidWeaponException(weaponToEquip);
-                return "New weapon equipped!";
             }
         }
         /// <summary>

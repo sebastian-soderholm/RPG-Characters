@@ -83,7 +83,9 @@ namespace RPG_Characters
             {
                 Equipment[Slot.SLOT_WEAPON] = armorToEquip;
                 //Armor increases character's TotalPrimaryAttributes
+                Console.WriteLine("TotalPrimaryAttributes before equip: " + TotalPrimaryAttributes);
                 TotalPrimaryAttributes += armorToEquip.PrimaryItemAttributes;
+                Console.WriteLine("TotalPrimaryAttributes after equip: " + TotalPrimaryAttributes);
                 return "New armor equipped!";
             }
             else
@@ -99,9 +101,9 @@ namespace RPG_Characters
         {
             if (Equipment[Slot.SLOT_WEAPON] != null)
             {
-                return (double)((double)Equipment[Slot.SLOT_WEAPON].GetDPS() + 1.0 + ((double)BasePrimaryAttributes.Strength + (double)TotalPrimaryAttributes.Strength) / 100);
+                return (double)(Equipment[Slot.SLOT_WEAPON].GetDPS() + 1.0 + ((double)BasePrimaryAttributes.Strength + (double)TotalPrimaryAttributes.Strength) / 100);
             }
-            return 1 + ((double)(BasePrimaryAttributes.Strength + (double)TotalPrimaryAttributes.Strength) / 100);
+            return 1 + ((double)((double)BasePrimaryAttributes.Strength + (double)TotalPrimaryAttributes.Strength) / 100);
         }
     }
 }

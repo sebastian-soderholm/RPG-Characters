@@ -6,6 +6,13 @@ namespace RPG_Characters
 {
     public abstract class Character
     {
+    //    public virtual Character() {
+    //        Dictionary<Character, List<Weapon.WeaponType>> CharacterValidWeapon = new Dictionary<Character, List<Weapon.WeaponType>>()
+    //        {
+    //            Warrior, new List<Weapon.WeaponType>(Weapon.WeaponType.WEAPON_AXE, Weapon.WeaponType.WEAPON_HAMMER, Weapon.WeaponType.WEAPON_SWORD)
+    //        };
+    //}
+
         public string Name { get; set; }
         public int Level { get; set; }
         /// <summary>
@@ -25,6 +32,7 @@ namespace RPG_Characters
         /// </summary>
         public Dictionary<Slot, Item> Equipment { get; set; }
 
+        //Create lists of suitable items for characters to handle equip() method in base class
         public Dictionary<Character, List<Weapon.WeaponType>> CharacterValidWeapon { get; set; }
         public Dictionary<Character, List<Armor.ArmorType>> CharacterValidArmor { get; set; }
 
@@ -36,7 +44,6 @@ namespace RPG_Characters
         {
             CHARACTER_MAGE, CHARACTER_RANGER, CHARACTER_ROGUE, CHARACTER_WARRIOR
         }
-        //public Dictionary<CharacterType, Dictionary<Weapon.WeaponType, Armor.ArmorType>>()
 
         /// <summary>
         /// Increase Character's level by 1

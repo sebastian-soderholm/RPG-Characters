@@ -37,7 +37,12 @@ namespace RPG_Characters
                 ElementalResistance == b.ElementalResistance;
         }
 
-
+        /// <summary>
+        /// SecondaryAttributes determine a characters defence and survival capabilities.
+        /// </summary>
+        /// <param name="health">Character's totla health. When health reaches zero, character dies.</param>
+        /// <param name="armorRating">Character's ability to resist physical damage.</param>
+        /// <param name="elementalResistance">Character's ability to resist magic damage.</param>
         public SecondaryAttributes(int health, int armorRating, int elementalResistance)
         {
             Health = health;

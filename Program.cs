@@ -14,7 +14,7 @@ namespace RPG_Characters
             //Act
             warrior.Equip(testWeapon);
             warrior.Equip(testArmor, Character.Slot.SLOT_BODY);
-            Console.WriteLine("This is the character DPS: " + testWeapon.GetDPS());
+            Console.WriteLine("This is the character DPS: " + warrior.GetDPS());
 
             //for (int i=0; i<3; i++)
             //{

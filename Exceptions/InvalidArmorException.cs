@@ -11,9 +11,6 @@ namespace RPG_Characters
     {
         public InvalidArmorException(){}
 
-        public InvalidArmorException(Armor armor) : base(String.Format("Character can not equip weapon: {0}", armor))
-        {
-
-        }
+        public InvalidArmorException(Armor armor) : base(String.Format("Character can not equip weapon: {0}", armor)){}
     }
 }

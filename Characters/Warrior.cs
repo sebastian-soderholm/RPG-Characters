@@ -84,7 +84,6 @@ namespace RPG_Characters
                 Equipment[Slot.SLOT_WEAPON] = armorToEquip;
                 //Armor increases character's TotalPrimaryAttributes
                 TotalPrimaryAttributes += armorToEquip.PrimaryItemAttributes;
-                Console.WriteLine("TotalPrimaryAttributes: " + TotalPrimaryAttributes);
                 return "New armor equipped!";
             }
             else
@@ -93,7 +92,7 @@ namespace RPG_Characters
             }
         }
         /// <summary>
-        /// Calculate Warrior's damage per second (DPS). Primary attribute strength affects Warrior's DPS.
+        /// Calculate Warrior's damage per second (DPS). Primary attribute strength affects warrior's DPS.
         /// </summary>
         /// <returns>Warrior's damage per second (DPS)</returns>
         public override double GetDPS()
